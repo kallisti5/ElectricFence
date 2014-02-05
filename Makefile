@@ -63,10 +63,10 @@ libefence.a: $(OBJECTS)
 
 tstheap: libefence.a tstheap.o
 	- rm -f tstheap
-	$(CC) $(CFLAGS) tstheap.o libefence.a -o tstheap -lpthread
+	$(CC) $(CFLAGS) tstheap.o libefence.a -o tstheap
 
 eftest: libefence.a eftest.o
 	- rm -f eftest
-	$(CC) $(CFLAGS) eftest.o libefence.a -o eftest -lpthread
+	$(CC) $(CFLAGS) eftest.o libefence.a -o eftest
 
 $(OBJECTS) tstheap.o eftest.o: efence.h

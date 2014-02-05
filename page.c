@@ -41,6 +41,8 @@ stringErrorReport(void)
 	return strerror(oserror());
 #elif ( defined(_AIX) )
 	return strerror(errno);
+#elif ( defined(__HAIKU__) )
+	return strerror(errno);
 #else
 	if ( errno > 0 && errno < sys_nerr )
 		return sys_errlist[errno];
