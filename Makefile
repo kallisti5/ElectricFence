@@ -28,7 +28,7 @@ PACKAGE_SOURCE= README libefence.3 Makefile efence.h \
 
 OBJECTS= efence.o page.o print.o
 
-all:	libefence.a tstheap eftest
+all:	libefence.so libefence.a tstheap eftest
 	@ echo
 	@ echo "Testing Electric Fence."
 	@ echo "After the last test, it should print that the test has PASSED."
@@ -39,13 +39,15 @@ all:	libefence.a tstheap eftest
 	@ echo
 
 install: libefence.a libefence.3
-	$(MV) libefence.a $(LIB_INSTALL_DIR)
+	$(CP) libefence.so $(LIB_INSTALL_DIR)
+	$(CP) libefence.a $(LIB_INSTALL_DIR)
 	$(CHMOD) 644 $(LIB_INSTALL_DIR)/libefence.a
+	$(CHMOD) 644 $(LIB_INSTALL_DIR)/libefence.so
 	$(INSTALL) libefence.3 $(MAN_INSTALL_DIR)/libefence.3
 	$(CHMOD) 644 $(MAN_INSTALL_DIR)/libefence.3
 
 clean:
-	- rm -f $(OBJECTS) tstheap.o eftest.o tstheap eftest libefence.a \
+	- rm -f $(OBJECTS) tstheap.o eftest.o tstheap eftest libefence.a libefence.so \
 	 libefence.cat ElectricFence.shar
 
 roff:
@@ -60,6 +62,10 @@ shar: ElectricFence.shar
 libefence.a: $(OBJECTS)
 	- rm -f libefence.a
 	$(AR) crv libefence.a $(OBJECTS)
+
+libefence.so: $(OBJECTS)
+	- rm -f libefence.so
+	$(CXX) -g -shared  -Wl,-soname,libefence.so -o libefence.so $(OBJECTS)
 
 tstheap: libefence.a tstheap.o
 	- rm -f tstheap
