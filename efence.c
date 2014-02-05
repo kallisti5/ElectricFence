@@ -377,7 +377,16 @@ allocateMoreSlots(void)
 	noAllocationListProtection = 1;
 	internalUse = 1;
 
+	#ifdef __GNUC__
+	asm volatile("":::"memory");
+	#endif
+
 	newAllocation = malloc(newSize);
+
+	#ifdef __GNUC__
+	asm volatile("":::"memory");
+	#endif
+
 	memcpy(newAllocation, allocationList, allocationListSize);
 	memset(&(((char *)newAllocation)[allocationListSize]), 0, bytesPerPage);
 
@@ -386,7 +395,15 @@ allocateMoreSlots(void)
 	slotCount += slotsPerPage;
 	unUsedSlots += slotsPerPage;
 
+	#ifdef __GNUC__
+	asm volatile("":::"memory");
+	#endif
+
 	free(oldAllocation);
+
+	#ifdef __GNUC__
+	asm volatile("":::"memory");
+	#endif
 
 	/*
 	 * Keep access to the allocation list open at this point, because
