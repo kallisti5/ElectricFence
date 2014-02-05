@@ -5,8 +5,8 @@ INSTALL= install
 MV= mv
 CHMOD= chmod
 CFLAGS= -g
-LIB_INSTALL_DIR= /usr/lib
-MAN_INSTALL_DIR= /usr/man/man3
+LIB_INSTALL_DIR= ${PREFIX}/lib
+MAN_INSTALL_DIR= ${PREFIX}/${PKGMANDIR}/man3
 
 PACKAGE_SOURCE= README libefence.3 Makefile efence.h \
 	efence.c page.c print.c eftest.c tstheap.c CHANGES COPYING
