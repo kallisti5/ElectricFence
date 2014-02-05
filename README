@@ -26,6 +26,8 @@ This version will run on:
 
 	OSF 1.3 (and possibly earlier versions) on a DECalpha.
 
+	Haiku
+
 On some of these platforms, you'll have to uncomment lines in the Makefile
 that apply to your particular system.
 
