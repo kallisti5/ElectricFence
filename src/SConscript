@@ -1,0 +1,20 @@
+import os
+import sys
+
+Import("env")
+
+sources = [
+	'efence.c',
+	'print.c',
+	'page.c'
+]
+
+# Build a static library
+efence_static = env.Clone()
+efence_static.StaticLibrary(target = 'efence', source = sources)
+
+# Build a shared library
+efence_shared = env.Clone()
+if env['PLATFORM'] == 'posix':
+	efence_shared.Append(LIBS = ["pthread"])
+efence_shared.SharedLibrary(target = 'efence', source = sources)
