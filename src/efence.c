@@ -44,8 +44,14 @@
 #undef	calloc
 #endif
 
-static const char	version[] = "\n  Electric Fence 2.1"
- " Copyright (C) 1987-1998 Bruce Perens.\n";
+static const char	version[] = "\n"
+ "==================================================\n"
+ "  Electric Fence 2.1\n"
+ "    Copyright (C) 1987-1998 Bruce Perens.\n"
+ "    Copyright (C) 2012-2013 Alexander von Gluck IV\n"
+ "==================================================\n";
+
+static const char	enabled[] = "\n  Memory fencing has been enabled\n\n";
 
 /*
  * MEMORY_CREATION_SIZE is the amount of memory to get from the operating
@@ -360,6 +366,8 @@ initialize(void)
 	 * Account for the two slot structures that we've used.
 	 */
 	unUsedSlots = slotCount - 2;
+	if ( EF_DISABLE_BANNER == 0 )
+		EF_Print(enabled);
 }
 
 /*
