@@ -28,21 +28,10 @@ This version will run on:
 
 	Haiku
 
-On some of these platforms, you'll have to uncomment lines in the Makefile
-that apply to your particular system.
-
-If you test Electric Fence on a platform not mentioned here, please send me a
-report.
-
-It will probably port to any ANSI/POSIX system that provides mmap(), and
+Electric Fence will probably port to any ANSI/POSIX system that provides mmap(), and
 mprotect(), as long as mprotect() has the capability to turn off all access
 to a memory page, and mmap() can use /dev/zero or the MAP_ANONYMOUS flag
 to create virtual memory pages.
-
-Complete information on the use of Electric Fence is in the manual page
-libefence.3 .
-
-	Thanks
 
 	Bruce Perens
 	Bruce@Pixar.com
