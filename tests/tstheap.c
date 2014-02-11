@@ -45,6 +45,8 @@ main(int argc, char * * argv)
 	if ( argc >= 2 )
 		duration = atoi(argv[1]);
 
+	printf("Exercising memory allocator... (%d counts)\n", duration);
+
 	for ( ; count < duration; count++ ) {
 		void * *	element = &pool[(int)(drand48() * POOL_SIZE)];
 		size_t		size = (size_t)(drand48() * (LARGEST_BUFFER + 1));
@@ -57,5 +59,7 @@ main(int argc, char * * argv)
 			*element = malloc(size);
 		}
 	}
+
+	printf("Complete!\n");
 	return 0;
 }

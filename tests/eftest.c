@@ -198,6 +198,7 @@ main(int argc, char * * argv)
 	EF_PROTECT_BELOW = 0;
 	EF_ALIGNMENT = 0;
 
+	printf("Beginning confidence test...\n");
 	while ( diag->explanation != 0 ) {
 		int	status = gotSegmentationFault(diag->test);
 
@@ -215,5 +216,7 @@ main(int argc, char * * argv)
 		}
 		diag++;
 	}
+
+	printf("Confidence test successful!\n");
 	return 0;
 }
