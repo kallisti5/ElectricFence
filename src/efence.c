@@ -46,7 +46,7 @@
 
 static const char	version[] = "\n"
  "==================================================\n"
- "  Electric Fence 2.1\n"
+ "  Electric Fence 3.0\n"
  "    Copyright (C) 1987-1998 Bruce Perens.\n"
  "    Copyright (C) 2012-2013 Alexander von Gluck IV\n"
  "==================================================\n";
